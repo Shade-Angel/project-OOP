@@ -1,4 +1,6 @@
 import time
+import shutil
+from pathlib import Path
 from config import ASSETS, OUTPUT_FILE
 from load import fetch_moex
 from generate import generate_synthetic
@@ -50,5 +52,16 @@ def main():
     print(f"Файл: {OUTPUT_FILE}")
 
 
+def cleanup_pycache():
+    root = Path(__file__).parent.parent
+    pycache_dirs = list(root.rglob("__pycache__"))
+    
+    for pycache in pycache_dirs:
+        try:
+            shutil.rmtree(pycache)
+        except Exception as e:
+            print(e)
+
 if __name__ == "__main__":
     main()
+    

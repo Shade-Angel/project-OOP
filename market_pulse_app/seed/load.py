@@ -2,7 +2,20 @@ import urllib.request
 import urllib.parse
 import json
 import time
+import ssl
+import urllib.error
 from config import START_DATE, END_DATE
+
+
+
+def _open_url(url: str):
+    try:
+        return urllib.request.urlopen(url, timeout=30)
+    except urllib.error.URLError as e:
+        if "CERTIFICATE_VERIFY_FAILED" in str(e):
+            context = ssl._create_unverified_context()
+            return urllib.request.urlopen(url, timeout=30, context=context)
+        raise
 
 
 def fetch_moex(ticker: str) -> list[dict]:
@@ -22,7 +35,7 @@ def fetch_moex(ticker: str) -> list[dict]:
         url = f"{base_url}?{params}"
 
         try:
-            with urllib.request.urlopen(url, timeout=30) as response:
+            with _open_url(url) as response:
                 data = json.loads(response.read().decode("utf-8"))
         except Exception as e:
             print(e)
