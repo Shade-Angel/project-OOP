@@ -29,8 +29,7 @@ def test_fixes_swapped_high_low():
 def test_sorts_by_ticker_and_date():
     data = clean_data([row(ticker="GAZP"), row(date="2023-01-04"), row()])
     keys = [(r["ticker"], r["date"]) for r in data]
-    assert keys == [("SBER", "2023-01-03"), ("SBER", "2023-01-04"), ("GAZP", "2023-01-03")]
-
+    assert keys == [("GAZP", "2023-01-03"), ("SBER", "2023-01-03"), ("SBER", "2023-01-04")]
 
 def test_empty_input_returns_empty():
     assert clean_data([]) == []
