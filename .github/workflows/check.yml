@@ -1,27 +1,26 @@
 name: Tests
 
 on:
-    push:
-        branches: [ main, develop ]
-    pull_request:
-        branches: [ main, develop ]
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
 
 jobs:
-    test:
-        runs-on: ubuntu-latest
+  test:
+    runs-on: ubuntu-latest
 
     steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-        - name: Set up Python
-          uses: actions/setup-python@v5
-          with:
-            python-version: "3.11"
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-        - name: Check directiry
-          run: ls -R
+      - name: Check directory
+        run: ls -R
 
-    
-        - name: Run tests
-          run: python test/run_test.py
+      - name: Run tests
+        run: python market_pulse_app/test/run_test.py
