@@ -2,9 +2,9 @@ name: Tests
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, develop ]
 
 jobs:
   test:
@@ -19,5 +19,8 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Check directory
+        run: ls -R
+
       - name: Run tests
-        run: python test/run_test.py
+        run: python market_pulse_app/test/run_test.py
