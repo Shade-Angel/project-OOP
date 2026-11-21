@@ -26,7 +26,7 @@ def test_sortino_ration():
     """
     Тест проверяет, что коэффициент Сортино должен быть положительным для растущего актива.
     """
-    returns = pd.Series([0.01, 0.02, -0.005, 0.015, 0.01])
+    returns = pd.Series([0.01, 0.02, -0.005, -0.01, 0.015, 0.01, -0.008])
     sortino = calculate_sortino(returns)
     assert sortino > 0
 
@@ -34,7 +34,7 @@ def test_max_drawndown_negative():
     """
     Тест проверяет, что максимальная просадка должен быть отрицательным.
     """
-    prices = pd.Series([100, 110, 90, 95, 80])
+    prices = pd.Series([100, 100, 80, 95, 80])
     max_down = calculate_max_down(prices)
     assert max_down < 0
     assert abs(max_down - (-0.2)) < 0.01
