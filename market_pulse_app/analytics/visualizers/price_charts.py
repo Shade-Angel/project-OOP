@@ -83,11 +83,11 @@ def plot_distribution(df: pd.DataFrame, ticker: str, reports_dir: Path):
     plt.xlabel("Доходность в %")
     plt.ylabel("Частота")
     plt.tight_layout()
-    plt.savefig(reports_dir / f"04_distribution_{ticker}.png", dpi=300)
+    plt.savefig(reports_dir / f"distribution_{ticker}.png", dpi=300)
     plt.close()
 
 
-def generate_all_price_charts(df: pd.DataFrame, tickers: list[str], reports_dir: Path):
+def generate_price_charts(df: pd.DataFrame, tickers: list[str], reports_dir: Path):
     print("price_charts.py")
     for ticker in tickers:
         if ticker in df["ticker"].values:

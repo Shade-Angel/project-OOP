@@ -21,8 +21,7 @@ def calculate_metrics(df: pd.DataFrame, assets_meta: list[dict]) -> pd.DataFrame
         ticker_df = df[df["ticker"] == ticker].sort_index()
         daily = ticker_df["close"].pct_change()
 
-        total = (ticker_df["close"]).iloc[-1] / ticker_df["close"]
-        monthly = ticker_df["close"].pct_change(21).iloc[-1]
+        total = (ticker_df["close"]).iloc[-1] / ticker_df["close"].iloc[0] - 1
         if len(ticker_df) >= 21:
             monthly = ticker_df["close"].pct_change(21).iloc[-1]
         else:
@@ -59,7 +58,7 @@ def calculate_metrics(df: pd.DataFrame, assets_meta: list[dict]) -> pd.DataFrame
             "volatility": volatility,
             "sharpe": sharpe,
             "sortino": sortino,
-            "max_drawdown": max_down,
+            "max_down": max_down,
             "var_95": var_95,
             "rsi": rsi,
             "skewness": skewness,

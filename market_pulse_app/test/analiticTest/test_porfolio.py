@@ -66,7 +66,7 @@ def test_metrics_has_columns():
     res = calculate_metrics(df, meta)
     req_col = {
         "ticker", "name", "sector", "last_price", "total",
-        "volatility", "sharpe", "max_drawdown", "rsi"
+        "volatility", "sharpe", "max_down", "rsi"
     }
     assert req_col.issubset(set(res.columns))
 
