@@ -5,6 +5,7 @@ from datetime import datetime
 
 def save_json(data: dict, filepath: Path) -> None:
     """Сохраняет данные в JSON файл."""
+    filepath.parent.mkdir(parents=True, exist_ok=True)
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
     print(f"Сохранено в {filepath}")

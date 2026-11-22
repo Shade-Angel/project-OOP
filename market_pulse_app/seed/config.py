@@ -3,8 +3,7 @@ from pathlib import Path
 START_DATE = "2023-01-01"
 END_DATE = "2026-11-05"
 
-DATA_DIR = Path("data")
-DATA_DIR.mkdir(parents=True, exist_ok=True)
+DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 OUTPUT_FILE = DATA_DIR / "dataset.json"
 
 ASSETS = [

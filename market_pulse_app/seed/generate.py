@@ -1,5 +1,6 @@
 import math
 import random
+import zlib
 from datetime import datetime, timedelta
 from config import START_DATE, END_DATE, BASE_PRICES
 
@@ -18,7 +19,7 @@ def _generate_dates() -> list:
 def generate_synthetic(ticker: str) -> list[dict]:
     start_price = BASE_PRICES.get(ticker, 100)
 
-    random.seed(hash(ticker) % 1000)
+    random.seed(zlib.crc32(ticker.encode("utf-8")))
 
     mu = random.uniform(-0.05, 0.20)
     sigma = random.uniform(0.15, 0.40)

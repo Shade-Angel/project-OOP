@@ -9,7 +9,7 @@ def clean_data(rows: list[dict]) -> list[dict]:
 
     cleaned = []
     for row in unique_rows:
-        if row["open"] <= 0 or row["close"] <= 0:
+        if any(row[field] <= 0 for field in ("open", "high", "low", "close")):
             continue
 
         if row["high"] < row["low"]:

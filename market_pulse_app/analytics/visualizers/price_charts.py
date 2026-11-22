@@ -20,7 +20,7 @@ def plot_price(df: pd.DataFrame, ticker: str, reports_dir: Path):
     plt.figure(figsize=(14, 7))
     plt.plot(ticker_df.index, close, label="Цена", alpha=0.7)
     plt.plot(ticker_df.index, sma20, label="SMA 20", linestyle="--")
-    plt.plot(ticker_df.index, sma50, label="SMA 20", linestyle="--")
+    plt.plot(ticker_df.index, sma50, label="SMA 50", linestyle="--")
     plt.fill_between(ticker_df.index, lower, upper, alpha=0.1, color="gray")
 
     plt.title(f"Цена и индикаторы: {ticker}")
