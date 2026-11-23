@@ -23,9 +23,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r market_pulse_app/requirements.txt
-          
-      - name: Check directory
-        run: ls -R
 
       - name: Run tests
         run: python market_pulse_app/test/run_test.py

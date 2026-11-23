@@ -70,7 +70,7 @@ def fetch_moex(ticker: str) -> list[dict]:
             "high": float(item["high"]),
             "low": float(item["low"]),
             "close": float(item["close"]),
-            "volume": int(item["value"]),
+            "volume": int(item["volume"]),
             "source": "moex",
         })
 

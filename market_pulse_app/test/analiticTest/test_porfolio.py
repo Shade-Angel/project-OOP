@@ -119,3 +119,14 @@ def test_sector_sort():
     result = calculate_sector(metrics)
     returns = result["total"].tolist()
     assert returns == sorted(returns, reverse=True)
+
+
+def test_rsi_is_scalar_number():
+    """
+    Тест проверяет, что RSI в таблице метрик - одно число, а не Series.
+    """
+    df = _make_df(mode="single")
+    res = calculate_metrics(df, _make_assets_meta())
+    value = res["rsi"].iloc[0]
+    assert isinstance(value, float)
+    assert 0.0 <= value <= 100.0

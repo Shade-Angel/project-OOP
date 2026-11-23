@@ -33,3 +33,8 @@ def test_sorts_by_ticker_and_date():
 
 def test_empty_input_returns_empty():
     assert clean_data([]) == []
+
+
+def test_drops_nonpositive_high_low():
+    assert clean_data([row(high=0)]) == []
+    assert clean_data([row(low=-1)]) == []

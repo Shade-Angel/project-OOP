@@ -33,10 +33,11 @@ def calculate_metrics(df: pd.DataFrame, assets_meta: list[dict]) -> pd.DataFrame
         max_down = calculate_max_down(ticker_df["close"])
         var_95 = calculate_var(daily)
 
-        if len(ticker_df) >= 14:
-            rsi = calculate_rsi(ticker_df["close"])
-        else:
-            rsi = 0.0
+        rsi = 0.0
+        if len(ticker_df) > 14:
+            rsi_last = calculate_rsi(ticker_df["close"]).iloc[-1]
+            if pd.notna(rsi_last):
+                rsi = float(rsi_last)
 
         skewness = calculate_skewness(daily)
         kurtosis = calculate_kurtosis(daily)
