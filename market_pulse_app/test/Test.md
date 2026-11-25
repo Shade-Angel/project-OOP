@@ -12,7 +12,7 @@ check_vis.py (лежит в analiticTest) - не тест, а ручная пр�
 
 Из корня проекта:
 
-python market_pulse_app/test/run_test.py
+python test/run_test.py
 
 ## Результат
 
