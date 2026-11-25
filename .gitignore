@@ -4,6 +4,5 @@ market_pulse_app/venv/
 market_pulse_app/__pycache__/
 market_pulse_app/*.pyc
 
-market_pulse_app/reports/
 market_pulse_app/test/reports/
 market_pulse_app/test/temp_reports/
